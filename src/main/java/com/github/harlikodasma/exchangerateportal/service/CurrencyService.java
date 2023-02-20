@@ -21,12 +21,12 @@ public class CurrencyService {
     public List<CurrencyDto> getCurrencyList() {
         CurrencyListXmlDto response = restTemplate.getForObject(CURRENCY_LIST_FULL_URI, CurrencyListXmlDto.class);
         if (response != null) {
-            return xmlCurrenciesToDto(response);
+            return xmlCurrenciesToDtoList(response);
         }
         throw new PortalServiceRestClientException(ERROR_EXTERNAL_SERVICE_RESPONSE);
     }
 
-    private List<CurrencyDto> xmlCurrenciesToDto(CurrencyListXmlDto currencyListXmlDto) {
+    private List<CurrencyDto> xmlCurrenciesToDtoList(CurrencyListXmlDto currencyListXmlDto) {
         return currencyListXmlDto.getCurrencyList().stream().map(
                         currency -> new CurrencyDto(currency.getAlphabeticCode(), currency.getCurrencyName().get(1).getValue()))
                 .toList();

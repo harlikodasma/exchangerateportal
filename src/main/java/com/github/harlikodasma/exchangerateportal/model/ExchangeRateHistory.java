@@ -3,23 +3,30 @@ package com.github.harlikodasma.exchangerateportal.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import static jakarta.persistence.GenerationType.IDENTITY;
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
-@Table(name = "EXCHANGE_RATE_HISTORY")
+@Table(name = "EXCHANGE_RATE_HISTORY", schema = "PUBLIC")
 public class ExchangeRateHistory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "ID", nullable = false)
     private Long id;
 
