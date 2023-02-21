@@ -1,22 +1,6 @@
 <p>{{ 'exchange.rate.intro' | translate }}</p>
-<form>
-  <mat-form-field appearance="fill">
-    <mat-label>{{ 'currency' | translate }}</mat-label>
-    <input [formControl]="formControl"
-           [matAutocomplete]="auto"
-           matInput
-           type="text">
-    <mat-autocomplete #auto="matAutocomplete"
-                      (optionSelected)="onCurrencySelected($event)"
-                      autoActiveFirstOption>
-      <mat-option *ngFor="let currency of filteredCurrencyList | async"
-                  [id]="currency.code"
-                  [value]="currency.name">
-        {{ currency.name }}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
+<app-currency-dropdown (currencySelectedEvent)="onCurrencySelected($event)"
+                       (isCurrencySelected)="setShowTable($event)"></app-currency-dropdown>
 
 <table *ngIf="showHistoryTable"
        [dataSource]="exchangeRateList"
@@ -31,7 +15,7 @@
 
   <ng-container matColumnDef="rateAgainstEur">
     <th mat-header-cell
-        *matHeaderCellDef>{{ 'exchange.rate.table.rate.against.eur' | translate }}</th>
+        *matHeaderCellDef>{{ 'exchange.rate.common.rate.against.eur' | translate }}</th>
     <td mat-cell
         *matCellDef="let element">{{ element.rateAgainstEur }}</td>
   </ng-container>

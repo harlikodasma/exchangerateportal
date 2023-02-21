@@ -15,11 +15,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatOptionModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { CurrencyCalculatorComponent } from './currency-calculator/currency-calculator.component';
+import { CurrencyDropdownComponent } from './shared/currency-dropdown/currency-dropdown.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExchangeRateHistoryComponent
+    ExchangeRateHistoryComponent,
+    CurrencyCalculatorComponent,
+    CurrencyDropdownComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,8 @@ import { MatTableModule } from '@angular/material/table';
     MatMenuModule,
     MatAutocompleteModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

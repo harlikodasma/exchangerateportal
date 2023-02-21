@@ -1,0 +1,26 @@
+/* Chrome, Safari, Edge, Opera */
+.amount::-webkit-outer-spin-button,
+.amount::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.amount {
+  -moz-appearance: textfield;
+}
+
+mat-form-field.amount {
+  width: 10em;
+}
+
+.form-elements {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+}
+
+mat-error {
+  padding-bottom: 1.5em;
+}

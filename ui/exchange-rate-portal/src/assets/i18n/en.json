@@ -1,7 +1,12 @@
 {
   "currency": "Currency",
+  "currency.calculator.amount": "Amount (EUR)",
+  "currency.calculator.calculate": "Calculate",
+  "currency.calculator.intro": "Currency calculator",
+  "currency.calculator.eur": "EUR",
+  "currency.calculator.validation.error": "Both selections are mandatory!",
   "dashboard.title": "Exchange Rate Portal",
+  "exchange.rate.common.rate.against.eur": "Rate against EUR",
   "exchange.rate.intro": "Select a currency to see its exchange rate history",
-  "exchange.rate.table.date": "Date",
-  "exchange.rate.table.rate.against.eur": "Rate against EUR"
+  "exchange.rate.table.date": "Date"
 }

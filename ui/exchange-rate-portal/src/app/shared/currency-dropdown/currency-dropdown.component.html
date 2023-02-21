@@ -1,0 +1,18 @@
+<form>
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'currency' | translate }}</mat-label>
+    <input [formControl]="formControl"
+           [matAutocomplete]="auto"
+           matInput
+           type="text">
+    <mat-autocomplete #auto="matAutocomplete"
+                      (optionSelected)="onCurrencySelected($event)"
+                      autoActiveFirstOption>
+      <mat-option *ngFor="let currency of filteredCurrencyList | async"
+                  [id]="currency.code"
+                  [value]="currency.name">
+        {{ currency.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

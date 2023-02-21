@@ -1,0 +1,24 @@
+<p>{{ 'currency.calculator.intro' | translate }}</p>
+<form (ngSubmit)="onCalculate()">
+  <div class="form-elements">
+    <mat-form-field appearance="fill"
+                    class="amount">
+      <mat-label>{{ 'currency.calculator.amount' | translate }}</mat-label>
+      <input [formControl]="amountFormControl"
+             class="amount"
+             matInput
+             type="number">
+    </mat-form-field>
+    <app-currency-dropdown (currencySelectedEvent)="onCurrencySelected($event)"
+                           (isCurrencySelected)="setCurrencySelected($event)"></app-currency-dropdown>
+  </div>
+  <mat-error *ngIf="areValidationErrors">{{ 'currency.calculator.validation.error' | translate }}</mat-error>
+  <button color="primary"
+          mat-raised-button
+          type="submit">{{ 'currency.calculator.calculate' | translate }}</button>
+</form>
+<div *ngIf="showResults">
+  <br>
+  <div>{{ generateResult() }}</div>
+  <div>{{ generateResultExchangeRate() }}</div>
+</div>
