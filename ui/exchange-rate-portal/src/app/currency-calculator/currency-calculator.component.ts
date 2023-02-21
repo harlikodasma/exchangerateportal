@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { TranslateService } from '@ngx-translate/core';
+import { CurrencyService } from '../_services/currency.service';
+import { tap } from 'rxjs';
+import { CurrencyCalculate } from '../_models/currency-calculate';
 
 @Component({
   selector: 'app-currency-calculator',
@@ -15,10 +18,11 @@ export class CurrencyCalculatorComponent {
   areValidationErrors: boolean = false;
   showResults: boolean = false;
   private selectedCurrency: string = '';
-  private submittedAmount?: number;
-  private submittedCurrency: string = '';
+  private submittedCalculation?: { amount: number, currency: string };
+  private fetchedCalculation?: CurrencyCalculate;
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService,
+              private currencyService: CurrencyService) {
   }
 
   onCurrencySelected(event: MatAutocompleteSelectedEvent): void {
@@ -34,18 +38,28 @@ export class CurrencyCalculatorComponent {
       this.areValidationErrors = true;
     } else {
       this.areValidationErrors = false;
-      this.submittedAmount = this.amountFormControl.value;
-      this.submittedCurrency = this.selectedCurrency;
       this.showResults = true;
+      this.submittedCalculation = {
+        amount: this.amountFormControl.value,
+        currency: this.selectedCurrency
+      };
+
+      this.currencyService.calculateCurrencyRate(this.submittedCalculation.amount, this.submittedCalculation.currency).pipe(
+        tap((response: CurrencyCalculate) => {
+          this.fetchedCalculation = response;
+        })
+      ).subscribe();
     }
   }
 
   generateResult(): string {
-    return `${this.submittedAmount} ${this.translate.instant('currency.calculator.eur')} = amount ${this.submittedCurrency}`;
+    return `${this.submittedCalculation?.amount}
+            ${this.translate.instant('currency.calculator.eur')} = ${this.fetchedCalculation?.calculatedAmount}
+            ${this.submittedCalculation?.currency}`;
   }
 
   generateResultExchangeRate(): string {
-    return `${this.translate.instant('exchange.rate.common.rate.against.eur')}: amount2`;
+    return `${this.translate.instant('exchange.rate.common.rate.against.eur')}: ${this.fetchedCalculation?.rateAgainstEur}`;
   }
 
 }

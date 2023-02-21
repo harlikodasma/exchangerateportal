@@ -15,6 +15,6 @@ export class ExchangeRateService {
   }
 
   getExchangeRateHistoryForCurrency(currencyAlphabeticCode: string): Observable<ExchangeRate[]> {
-    return this.http.get<ExchangeRate[]>(this.exchangeRateBaseUrl + "?currencyAlphabeticCode=" + currencyAlphabeticCode);
+    return this.http.get<ExchangeRate[]>(`${this.exchangeRateBaseUrl}?currencyAlphabeticCode=${currencyAlphabeticCode}`);
   }
 }
