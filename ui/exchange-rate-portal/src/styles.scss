@@ -17,8 +17,17 @@ $theme: mat.define-light-theme((
 
 @include mat.all-component-themes($theme);
 
+@font-face {
+  font-family: SEB;
+  src: url("assets/SEBSansSerif-Regular.woff") format("opentype");
+}
+
+* {
+  font-family: 'SEB', 'ui-sans-serif' !important;
+}
+
 body {
-  background: #222d38;
+  background: #1a1a1a;
   color: aliceblue;
 }
 

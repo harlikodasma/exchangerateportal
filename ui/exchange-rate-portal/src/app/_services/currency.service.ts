@@ -9,7 +9,7 @@ import { Currency } from '../_models/currency';
 })
 export class CurrencyService {
 
-  private currencyBaseUrl: string = `${API_BASE_PATH}/currency`
+  private currencyBaseUrl: string = `${API_BASE_PATH}/currency`;
 
   constructor(private http: HttpClient) {
   }

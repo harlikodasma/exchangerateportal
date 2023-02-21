@@ -1,5 +1,7 @@
 {
   "currency": "Currency",
   "dashboard.title": "Exchange Rate Portal",
-  "exchange.rate.intro": "Select a currency to see its exchange rate history"
+  "exchange.rate.intro": "Select a currency to see its exchange rate history",
+  "exchange.rate.table.date": "Date",
+  "exchange.rate.table.rate.against.eur": "Rate against EUR"
 }
