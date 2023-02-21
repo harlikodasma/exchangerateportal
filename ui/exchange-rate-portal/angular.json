@@ -68,7 +68,8 @@
               "browserTarget": "exchange-rate-portal:build:production"
             },
             "development": {
-              "browserTarget": "exchange-rate-portal:build:development"
+              "browserTarget": "exchange-rate-portal:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

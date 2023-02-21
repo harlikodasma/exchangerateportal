@@ -12,7 +12,6 @@ import java.time.LocalDate;
 @Data
 public class ExchangeRateDto {
 
-    private Long id;
     private LocalDate date;
     private String currencyAlphabeticCode;
     private BigDecimal rateAgainstEur;
